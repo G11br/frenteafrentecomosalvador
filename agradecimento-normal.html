@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Confirmado - Muito Obrigado!</title>
+    <style>
+        :root {
+            --primary-color: #25D366; /* Verde WhatsApp */
+            --primary-hover: #128C7E;
+            --accent-color: #D4AF37; /* Dourado para detalhes de destaque */
+            --bg-color: #f4f6f8; /* Fundo totalmente plano e sólido */
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #666666;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .thank-you-container {
+            background-color: var(--card-bg);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            border-radius: 8px;
+            text-align: center;
+            /* Design plano, sem sombras complexas ou 3D */
+            border: 1px solid #e0e0e0;
+        }
+
+        .icon-check {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(37, 211, 102, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 25px auto;
+        }
+
+        .icon-check svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background-color: #fffbeb;
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            text-align: left;
+            border-radius: 4px;
+            margin-bottom: 40px;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1rem;
+            color: #5c4f22;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-container {
+                padding: 40px 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <!-- Ícone de Sucesso SVG -->
+        <div class="icon-check">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1>Registro Confirmado!</h1>
+        <p>Seu registro está sendo processado de forma segura. Siga para a confirmação da sua compra da pré-venda no e-mail cadastrado.</p>
+
+        <div class="highlight-box">
+            <p><strong>Atenção:</strong> Todas as atualizações sobre o lançamento, detalhes de envio e bônus exclusivos serão comunicados primeiramente no nosso grupo VIP.</p>
+        </div>
+
+        <!-- Substitua o link abaixo pelo link do seu grupo -->
+        <a href="https://pag.ae/81-zDTBCN" class="btn-whatsapp">
+            Adquirir Agora!!
+        </a>
+
+        <div class="footer-note">
+            Se tiver alguma dúvida, entre em contato com o nosso suporte.
+        </div>
+    </div>
+
+</body>
+</html>
