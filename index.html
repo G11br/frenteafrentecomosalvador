@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Pré-venda do Livro</title>
+    <style>
+        :root {
+            --primary-color: #25D366; 
+            --primary-hover: #128C7E;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --text-color: #333;
+        }
+
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: var(--text-color); background-color: var(--light-bg); }
+
+        .hero { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--dark-bg); color: white; padding: 20px; }
+        .hero-content { max-width: 1200px; display: flex; align-items: center; gap: 50px; width: 100%; }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; line-height: 1.6; }
+
+        .btn-cta { background-color: var(--primary-color); color: white; padding: 18px 40px; font-size: 1.2rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s, transform 0.2s; text-transform: uppercase; }
+        .btn-cta:hover { background-color: var(--primary-hover); transform: scale(1.02); }
+
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .book-placeholder { width: 100%; max-width: 400px; height: 550px; background: linear-gradient(45deg, #333, #444); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4); color: #666; font-size: 1.2rem; text-align: center; border: 2px dashed #555; overflow: hidden; }
+
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background: #ffffff; padding: 40px; border-radius: 12px; width: 100%; max-width: 500px; position: relative; box-sizing: border-box; animation: modalFadeIn 0.3s ease; }
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; color: #999; cursor: pointer; line-height: 1; }
+        .close-btn:hover { color: #333; }
+
+        .modal-content h2 { margin-top: 0; font-size: 1.8rem; text-align: center; color: var(--text-color); }
+        .form-group { margin-bottom: 15px; }
+        .form-row { display: flex; gap: 15px; }
+        .form-row .form-group { flex: 1; }
+        
+        /* Ajuste de largura para os campos Rua e Número */
+        .rua-col { flex: 2 !important; }
+        .numero-col { flex: 1 !important; }
+
+        label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 0.9rem; color: #444; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s; color: #333; }
+        input:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1); }
+
+        .btn-submit { width: 100%; padding: 14px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s; margin-top: 15px; }
+        .btn-submit:hover { background-color: var(--primary-hover); }
+        .btn-submit:disabled { background-color: #999; cursor: not-allowed; }
+
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column; text-align: center; margin-top: 40px; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .form-row { flex-direction: column; gap: 0; }
+            .modal-content { margin: 20px; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>O título chamativo do seu livro vai aqui</h1>
+                <p>Use este espaço para quebrar objeções e gerar desejo. Explique em poucas linhas por que a pessoa precisa estar na pré-venda e o que ela ganha entrando no grupo VIP do WhatsApp hoje.</p>
+                <button class="btn-cta" id="btnAbrirModal">Garantir meu exemplar</button>
+            </div>
+            <div class="hero-image">
+                <div class="book-placeholder">
+                    <span>Espaço para o<br>render 3D do Livro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="modalFormulario">
+        <div class="modal-content">
+            <span class="close-btn" id="btnFecharModal">&times;</span>
+            <h2>Complete seu cadastro</h2>
+            
+            <form id="formPreVenda">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="Nome" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">WhatsApp</label>
+                        <input type="tel" id="telefone" name="WhatsApp" placeholder="(11) 99999-9999" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="CEP" maxlength="9" placeholder="00000-000" onblur="buscaCep()" required>
+                </div>
+
+                <!-- Nova divisão de Rua e Número -->
+                <div class="form-row">
+                    <div class="form-group rua-col">
+                        <label for="endereco">Rua</label>
+                        <input type="text" id="endereco" name="Endereço Completo" placeholder="Nome da rua" required>
+                    </div>
+                    <div class="form-group numero-col">
+                        <label for="numero">Número</label>
+                        <input type="text" id="numero" name="Número" placeholder="Ex: 123" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="Bairro" required>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btnEnviar">Adquira seu livro</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modalFormulario');
+        const btnAbrir = document.getElementById('btnAbrirModal');
+        const btnFechar = document.getElementById('btnFecharModal');
+        btnAbrir.addEventListener('click', () => { modal.style.display = 'flex'; });
+        btnFechar.addEventListener('click', () => { modal.style.display = 'none'; });
+        window.addEventListener('click', (event) => { if (event.target === modal) { modal.style.display = 'none'; } });
+
+        // BUSCA DE CEP ATUALIZADA
+        function buscaCep() {
+            const cep = document.getElementById('cep').value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(resposta => resposta.json())
+                    .then(dados => {
+                        if (!dados.erro) {
+                            document.getElementById('endereco').value = dados.logradouro;
+                            document.getElementById('bairro').value = dados.bairro;
+                            
+                            // Joga o foco direto para o campo de número para facilitar a vida do usuário
+                            document.getElementById('numero').focus();
+                        }
+                    })
+                    .catch(erro => console.error('Erro ao buscar CEP:', erro));
+            }
+        }
+
+        // ENVIO DO FORMULÁRIO 
+        document.getElementById('formPreVenda').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const btnEnviar = document.getElementById('btnEnviar');
+            btnEnviar.innerText = 'Processando...';
+            btnEnviar.disabled = true;
+
+            // COLE AQUI A URL DO SEU APPS SCRIPT
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbweEPHtBSysDFJxTI4fTLMQiAfbyAf5szzgWGzf4T5KXCFZTBJB8b8YaNfhUYVKa3DiMg/exec';
+            
+            const formData = new FormData(this);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    window.location.href = 'https://shre.ink/jbXn';
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar!', error.message);
+                    alert('Houve um erro ao enviar seus dados. Tente novamente.');
+                    btnEnviar.innerText = 'Entrar no Grupo Exclusivo';
+                    btnEnviar.disabled = false;
+                });
+        });
+    </script>
+</body>
+</html>
