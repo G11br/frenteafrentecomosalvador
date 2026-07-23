@@ -3,40 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - Pré-venda do Livro</title>
+    <title>Pré-venda: Frente a Frente com o Salvador</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #25D366; 
-            --primary-hover: #128C7E;
-            --secondary-color: #f39c12; /* Cor da Capa Dura */
-            --secondary-hover: #e67e22;
-            --dark-bg: #1a1a1a;
-            --light-bg: #f8f9fa;
-            --text-color: #333;
+            --bg-flat: #F2EBE1; 
+            --text-dark: #1A1A1A; 
+            --text-muted: #5C4F45; 
+            
+            --gold-accent: #C59B27; 
+            --gold-hover: #A47E1B;
+            
+            --dark-brown: #3E2723;
+            --brown-hover: #2A1A17;
+
+            --white: #FFFFFF;
         }
 
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; margin: 0; padding: 0; color: var(--text-color); background-color: var(--light-bg); }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: var(--text-dark); 
+            background-color: var(--bg-flat); 
+        }
 
-        .hero { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--dark-bg); color: white; padding: 20px; }
-        .hero-content { max-width: 1200px; display: flex; align-items: center; gap: 50px; width: 100%; }
+        .hero { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            padding: 40px 20px; 
+            box-sizing: border-box;
+        }
+
+        .hero-content { 
+            max-width: 1200px; 
+            display: flex; 
+            align-items: center; 
+            gap: 60px; 
+            width: 100%; 
+        }
+
         .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 20px; }
-        .hero-text p { font-size: 1.2rem; color: #ccc; margin-bottom: 40px; line-height: 1.6; }
+        
+        .author-name {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
 
-        .btn-cta { background-color: var(--primary-color); color: white; padding: 18px 40px; font-size: 1.2rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s, transform 0.2s; text-transform: uppercase; }
-        .btn-cta:hover { background-color: var(--primary-hover); transform: scale(1.02); }
+        .hero-text h1 { 
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5rem; 
+            line-height: 1; 
+            margin-top: 0;
+            margin-bottom: 15px; 
+            text-transform: uppercase;
+            color: var(--text-dark);
+        }
 
-        .hero-image { flex: 1; display: flex; justify-content: center; }
-        .book-placeholder { width: 100%; max-width: 400px; height: 550px; background: linear-gradient(45deg, #333, #444); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4); color: #666; font-size: 1.2rem; text-align: center; border: 2px dashed #555; overflow: hidden; }
+        .hero-text h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
 
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-        .modal-content { background: #ffffff; padding: 40px; border-radius: 12px; width: 100%; max-width: 500px; position: relative; box-sizing: border-box; animation: modalFadeIn 0.3s ease; }
-        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-text p { 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            margin-bottom: 40px; 
+            line-height: 1.6; 
+        }
 
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; color: #999; cursor: pointer; line-height: 1; }
-        .close-btn:hover { color: #333; }
+        .btn-cta { 
+            background-color: var(--gold-accent); 
+            color: var(--white); 
+            padding: 20px 40px; 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+        
+        .btn-cta:hover { 
+            background-color: var(--gold-hover); 
+        }
 
-        .modal-content h2 { margin-top: 0; font-size: 1.8rem; text-align: center; color: var(--text-color); margin-bottom: 25px; }
+        .hero-image { 
+            flex: 1; 
+            display: flex; 
+            justify-content: center; 
+        }
+
+        /* SOMBRA REMOVIDA AQUI */
+        .hero-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .modal-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: rgba(26, 26, 26, 0.85); 
+            z-index: 1000; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .modal-content { 
+            background: var(--white); 
+            padding: 40px; 
+            border-radius: 4px; 
+            width: 100%; 
+            max-width: 500px; 
+            position: relative; 
+            box-sizing: border-box; 
+            animation: modalFadeIn 0.3s ease; 
+        }
+
+        @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .close-btn { 
+            position: absolute; 
+            top: 15px; right: 20px; 
+            font-size: 28px; font-weight: bold; color: #999; 
+            cursor: pointer; line-height: 1; 
+        }
+        .close-btn:hover { color: var(--text-dark); }
+
+        .modal-content h3 { 
+            margin-top: 0; 
+            font-size: 1.6rem; 
+            text-align: center; 
+            color: var(--text-dark); 
+            margin-bottom: 25px; 
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
         
         .form-group { margin-bottom: 15px; }
         .form-row { display: flex; gap: 15px; }
@@ -44,29 +166,50 @@
         .rua-col { flex: 2 !important; }
         .numero-col { flex: 1 !important; }
 
-        label { display: block; margin-bottom: 5px; font-weight: 500; font-size: 0.9rem; color: #444; }
-        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s; color: #333; }
-        input:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1); }
+        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; }
+        input { 
+            width: 100%; padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+            font-size: 1rem; 
+            box-sizing: border-box; 
+            transition: border-color 0.3s; 
+            color: var(--text-dark); 
+            background-color: #fafafa;
+        }
+        input:focus { border-color: var(--gold-accent); outline: none; background-color: var(--white); }
 
-        /* Estilos para os dois botões de envio no formulário */
-        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-group { display: flex; gap: 10px; margin-top: 25px; }
         
-        .btn-submit { flex: 1; padding: 14px 10px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s; }
-        .btn-submit:hover { background-color: var(--primary-hover); }
-        .btn-submit:disabled { background-color: #999; cursor: not-allowed; }
+        .btn-submit { 
+            flex: 1; padding: 16px 10px; 
+            background-color: var(--gold-accent); 
+            color: var(--white); 
+            border: none; 
+            border-radius: 4px; 
+            font-size: 1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+            text-transform: uppercase;
+        }
+        .btn-submit:hover { background-color: var(--gold-hover); }
+        .btn-submit:disabled { background-color: #ccc; cursor: not-allowed; }
         
-        .btn-dura { background-color: var(--secondary-color); }
-        .btn-dura:hover { background-color: var(--secondary-hover); }
+        .btn-dura { background-color: var(--dark-brown); }
+        .btn-dura:hover { background-color: var(--brown-hover); }
 
-        @media (max-width: 768px) {
-            .hero-content { flex-direction: column; text-align: center; margin-top: 40px; }
-            .hero-text h1 { font-size: 2.2rem; }
+        @media (max-width: 900px) {
+            .hero-content { flex-direction: column; text-align: center; gap: 40px; }
+            .hero-text h1 { font-size: 3.5rem; }
+            .hero-image img { max-width: 350px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2.8rem; }
+            .btn-group { flex-direction: column; }
             .form-row { flex-direction: column; gap: 0; }
             .modal-content { margin: 20px; padding: 25px; }
-        }
-        
-        @media (max-width: 480px) {
-            .btn-group { flex-direction: column; }
         }
     </style>
 </head>
@@ -75,14 +218,14 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>O título chamativo do seu livro vai aqui</h1>
-                <p>Insira seus dados de entrega para garantir seu exemplar na pré-venda exclusiva. O pagamento é processado com total segurança.</p>
+                <div class="author-name">Micaías Vieira</div>
+                <h1>Frente a Frente<br>com o Salvador</h1>
+                <h2>Todo encontro com ELE exige uma resposta</h2>
+                <p>Garanta o seu exemplar exclusivo na pré-venda. Preencha seus dados de entrega para escolher a versão de capa e ser direcionado para o pagamento seguro.</p>
                 <button class="btn-cta" id="btnAbrirModal">Garantir meu exemplar</button>
             </div>
             <div class="hero-image">
-                <div class="book-placeholder">
-                    <span>Espaço para o<br>render 3D do Livro</span>
-                </div>
+                <img src="cap.png" alt="Capa do Livro Frente a Frente com o Salvador">
             </div>
         </div>
     </section>
@@ -90,10 +233,9 @@
     <div class="modal-overlay" id="modalFormulario">
         <div class="modal-content">
             <span class="close-btn" id="btnFecharModal">&times;</span>
-            <h2>Dados de Entrega</h2>
+            <h3>Dados de Entrega</h3>
             
             <form id="formPreVenda">
-                <!-- Armazena qual botão foi clicado -->
                 <input type="hidden" id="tipoCapa" name="Tipo de Capa">
 
                 <div class="form-group">
@@ -119,12 +261,12 @@
 
                 <div class="form-row">
                     <div class="form-group rua-col">
-                        <label for="endereco">Rua</label>
+                        <label for="endereco">Endereço</label>
                         <input type="text" id="endereco" name="Endereço Completo" placeholder="Nome da rua" required>
                     </div>
                     <div class="form-group numero-col">
                         <label for="numero">Número</label>
-                        <input type="text" id="numero" name="Número" placeholder="Ex: 123" required>
+                        <input type="text" id="numero" name="Número" required>
                     </div>
                 </div>
 
@@ -133,11 +275,9 @@
                     <input type="text" id="bairro" name="Bairro" required>
                 </div>
 
-                <!-- Botões de Finalização -->
                 <div class="btn-group">
-                    <button type="submit" class="btn-submit btn-normal" onclick="escolherCapa('Capa Normal', '/agradecimento-normal.html')">Comprar Capa Normal</button>
-                    <!-- Insira o link da capa dura abaixo -->
-                    <button type="submit" class="btn-submit btn-dura" onclick="escolherCapa('Capa Dura', '/agradecimento-dura.html')">Comprar Capa Dura</button>
+                    <button type="submit" class="btn-submit btn-normal" onclick="escolherCapa('Capa Normal', '/agradecimento-normal.html')">Capa Normal</button>
+                    <button type="submit" class="btn-submit btn-dura" onclick="escolherCapa('Capa Dura', '/agradecimento-dura.html')">Capa Dura</button>
                 </div>
             </form>
         </div>
@@ -150,7 +290,6 @@
         
         let linkDePagamentoAtual = '';
 
-        // Registra a escolha antes de o formulário ser disparado
         function escolherCapa(tipo, link) {
             document.getElementById('tipoCapa').value = tipo;
             linkDePagamentoAtual = link;
@@ -179,11 +318,9 @@
         document.getElementById('formPreVenda').addEventListener('submit', function(e) {
             e.preventDefault(); 
             
-            // Gerencia o estado dos dois botões durante o carregamento
             const botoes = document.querySelectorAll('.btn-submit');
             botoes.forEach(btn => btn.disabled = true);
             
-            // Ocultamente, descobre qual botão foi o responsável pelo envio para mudar o texto dele
             const tipoSelecionado = document.getElementById('tipoCapa').value;
             const botaoAtivo = tipoSelecionado === 'Capa Normal' 
                 ? document.querySelector('.btn-normal') 
@@ -191,8 +328,7 @@
                 
             botaoAtivo.innerText = 'Processando...';
 
-            // LEMBRE-SE DE COLAR A URL DO GOOGLE APPS SCRIPT AQUI
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbweEPHtBSysDFJxTI4fTLMQiAfbyAf5szzgWGzf4T5KXCFZTBJB8b8YaNfhUYVKa3DiMg/exec';
+            const scriptURL = 'COLE_AQUI_A_URL_DO_APP_DA_WEB';
             
             const formData = new FormData(this);
 
@@ -204,10 +340,9 @@
                     console.error('Erro ao enviar!', error.message);
                     alert('Houve um erro de conexão. Tente novamente.');
                     
-                    // Restaura os botões se houver erro
                     botoes.forEach(btn => btn.disabled = false);
-                    document.querySelector('.btn-normal').innerText = 'Comprar Capa Normal';
-                    document.querySelector('.btn-dura').innerText = 'Comprar Capa Dura';
+                    document.querySelector('.btn-normal').innerText = 'Capa Normal';
+                    document.querySelector('.btn-dura').innerText = 'Capa Dura';
                 });
         });
     </script>
