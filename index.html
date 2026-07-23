@@ -111,7 +111,6 @@
             justify-content: center; 
         }
 
-        /* SOMBRA REMOVIDA AQUI */
         .hero-image img {
             width: 100%;
             max-width: 450px;
@@ -138,6 +137,10 @@
             position: relative; 
             box-sizing: border-box; 
             animation: modalFadeIn 0.3s ease; 
+            
+            /* Novas regras para evitar que o modal estoure a tela */
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -147,6 +150,8 @@
             top: 15px; right: 20px; 
             font-size: 28px; font-weight: bold; color: #999; 
             cursor: pointer; line-height: 1; 
+            background: var(--white); /* Para garantir legibilidade caso role por cima do conteúdo */
+            border-radius: 50%;
         }
         .close-btn:hover { color: var(--text-dark); }
 
@@ -205,11 +210,40 @@
             .hero-image img { max-width: 350px; }
         }
 
+        /* AJUSTES EXCLUSIVOS PARA O CELULAR */
         @media (max-width: 480px) {
             .hero-text h1 { font-size: 2.8rem; }
-            .btn-group { flex-direction: column; }
             .form-row { flex-direction: column; gap: 0; }
-            .modal-content { margin: 20px; padding: 25px; }
+            
+            /* Compactação do modal */
+            .modal-content { 
+                margin: 15px; 
+                padding: 25px 20px; /* Reduzimos o padding interno */
+                max-height: 95vh; /* Ocupa até 95% da tela permitindo rolagem fluida */
+            }
+            .modal-content h3 { 
+                font-size: 1.3rem; 
+                margin-bottom: 15px; 
+            }
+            .form-group { 
+                margin-bottom: 10px; /* Campos mais próximos */
+            }
+            input { 
+                padding: 10px; /* Campos um pouco mais estreitos */
+            }
+            .btn-group { 
+                flex-direction: column; 
+                margin-top: 15px; 
+                gap: 8px;
+            }
+            .btn-submit {
+                padding: 14px 10px;
+            }
+            .close-btn { 
+                top: 10px; 
+                right: 15px; 
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -328,7 +362,7 @@
                 
             botaoAtivo.innerText = 'Processando...';
 
-            const scriptURL = 'COLE_AQUI_A_URL_DO_APP_DA_WEB';
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbweEPHtBSysDFJxTI4fTLMQiAfbyAf5szzgWGzf4T5KXCFZTBJB8b8YaNfhUYVKa3DiMg/exec';
             
             const formData = new FormData(this);
 
